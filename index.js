@@ -3,6 +3,7 @@ var blue = document.getElementById('blue');
 var red = document.getElementById('red');
 var off = document.getElementById('off');
 var solid = document.getElementById('solid');
+var run = document.getElementById('run');
 
 var solidCode = {
   green: 0xFE,
@@ -98,7 +99,32 @@ function setOff() {
   send(getBuffer("off", false));
 }
 
+var input;
+
+function setup() {
+  var result = [];
+  var fields = ['url', 'path', 'test', 'value', 'status'];
+  for(var i = 0; i < 3; i++) {
+  fields.forEach(function (f) {
+
+  });}
+  return result;
+}
+
+function loop() {
+  if(!input) {
+    input = setup();
+  }
+}
+
+function run() {
+  setInterval(loop, 60 * 1000);
+}
+
 blue.addEventListener('click', set("blue"));
 red.addEventListener('click', set("red"));
 green.addEventListener('click', set("green"));
 off.addEventListener('click', setOff);
+
+run.addEventListener('click', run);
+
