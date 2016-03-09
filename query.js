@@ -87,9 +87,12 @@ function build() {
         buildElement("input", row, "value[" + i + "]");
         status = buildElement("select", row, "status[" + i + "]");
         buildOptions(status, [{
-            value: "green",
-            label: "Green",
+            value: "off",
+            label: "Off",
             selected: true
+        },{
+            value: "green",
+            label: "Green"
         }, {
             value: "blue",
             label: "Blue"
