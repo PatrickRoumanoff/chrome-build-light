@@ -1,9 +1,8 @@
 var run = document.getElementById('run');
-var defaultScript = document.getElementById('defaultScript');
+var bambooScript = document.getElementById('bambooScript');
 var debug = document.getElementById('debug');
 
-function setDefaultScript() {
-    var d = [{
+var bambooScript = [{
         url: 'http://[host]:[port]/rest/api/latest/plan/[planKey].json',
         path: 'isBuilding',
         test: 'eq',
@@ -23,13 +22,16 @@ function setDefaultScript() {
         status: 'red'
     }];
 
-    d.forEach(function (data, i) {
-		document.getElementById("url[" + i + "]").value = data.url;
-		document.getElementById("path[" + i + "]").value = data.path;
-		document.getElementById("test[" + i + "]-" + data.test).selected = "selected";
-		document.getElementById("value[" + i + "]").value = data.value;
-		document.getElementById("status[" + i + "]-" + data.status).selected = "selected";
-    });
+function setScript(script) {
+	return function () {
+	    script.forEach(function (data, i) {
+			document.getElementById("url[" + i + "]").value = data.url;
+			document.getElementById("path[" + i + "]").value = data.path;
+			document.getElementById("test[" + i + "]-" + data.test).selected = "selected";
+			document.getElementById("value[" + i + "]").value = data.value;
+			document.getElementById("status[" + i + "]-" + data.status).selected = "selected";
+	    });
+	}
 }
 
 function buildOptions(select, options) {
@@ -195,5 +197,5 @@ function startLoop() {
 }
 
 run.addEventListener('click', startLoop);
-defaultScript.addEventListener('click', setDefaultScript);
+bambooScript.addEventListener('click', setScript(bambooScript));
 build();
