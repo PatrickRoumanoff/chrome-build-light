@@ -2,7 +2,8 @@ var run = document.getElementById('run');
 var bambooScript = document.getElementById('bambooScript');
 var debug = document.getElementById('debug');
 
-var bambooScript = [{
+var scripts = {
+    bamboo: [{
         url: 'http://[host]:[port]/rest/api/latest/plan/[planKey].json',
         path: 'isBuilding',
         test: 'eq',
@@ -17,21 +18,22 @@ var bambooScript = [{
     }, {
         url: 'http://[host]:[port]/rest/api/latest/plan/[planKey]-latest.json',
         path: 'successful',
-        test: 'eq',
-        value: 'false',
+        test: 'neq',
+        value: 'true',
         status: 'red'
-    }];
+    }]
+};
 
 function setScript(script) {
-	return function () {
-	    script.forEach(function (data, i) {
-			document.getElementById("url[" + i + "]").value = data.url;
-			document.getElementById("path[" + i + "]").value = data.path;
-			document.getElementById("test[" + i + "]-" + data.test).selected = "selected";
-			document.getElementById("value[" + i + "]").value = data.value;
-			document.getElementById("status[" + i + "]-" + data.status).selected = "selected";
-	    });
-	}
+    return function() {
+        script.forEach(function(data, i) {
+            document.getElementById("url[" + i + "]").value = data.url;
+            document.getElementById("path[" + i + "]").value = data.path;
+            document.getElementById("test[" + i + "]-" + data.test).selected = "selected";
+            document.getElementById("value[" + i + "]").value = data.value;
+            document.getElementById("status[" + i + "]-" + data.status).selected = "selected";
+        });
+    }
 }
 
 function buildOptions(select, options) {
@@ -197,5 +199,5 @@ function startLoop() {
 }
 
 run.addEventListener('click', startLoop);
-bambooScript.addEventListener('click', setScript(bambooScript));
+bambooScript.addEventListener('click', setScript(scripts['bamboo']));
 build();
