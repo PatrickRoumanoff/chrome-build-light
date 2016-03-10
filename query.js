@@ -1,6 +1,5 @@
 var run = document.getElementById('run');
 var bambooScript = document.getElementById('bambooScript');
-var debug = document.getElementById('debug');
 
 var scripts = {
     bamboo: [{
@@ -90,7 +89,7 @@ function build() {
             value: "off",
             label: "Off",
             selected: true
-        },{
+        }, {
             value: "green",
             label: "Green"
         }, {
@@ -169,7 +168,7 @@ function request(input) {
     xhr.setRequestHeader('Accept', 'text/json');
     xhr.onload = function() {
         var value = JSON.parse(xhr.responseText)[row.path];
-        if(test(value, row.test, row.value)) {
+        if (test(value, row.test, row.value)) {
             sendBuffer(getBuffer(statusToColor(row.status)));
         } else {
             request(input);
@@ -182,11 +181,30 @@ function loop() {
     request(setup());
 }
 
+var interval = null;
+
 function startLoop() {
-    loop();
-    setInterval(loop, 60 * 1000);
+    run.innerText = "Stop";
+    try {
+        loop();
+    } catch (e) {}
+    interval = setInterval(loop, 60 * 1000);
 }
 
-run.addEventListener('click', startLoop);
+function stopLoop() {
+    clearInterval(interval);
+    interval = null;
+    run.innerText = "Start";
+}
+
+function clickRun() {
+    if (interval) {
+        stopLoop();
+    } else {
+        startLoop();
+    }
+}
+
+run.addEventListener('click', clickRun);
 bambooScript.addEventListener('click', setScript(scripts['bamboo']));
 build();

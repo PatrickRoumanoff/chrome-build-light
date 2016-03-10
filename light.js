@@ -1,4 +1,6 @@
-var off = 0xFF, solid= 2, flash= 20;
+var off = 0xFF,
+    solid = 2,
+    flash = 20;
 var codes = {
     solid: {
         green: [solid, 0xFE, 0],
@@ -20,7 +22,7 @@ function getBuffer(status) {
         bytes[i] = 0;
     }
     var code = codes[status.solid ? "solid" : "flash"];
-    var b = code[status.color] 
+    var b = code[status.color]
     bytes[0] = b[0];
     bytes[1] = b[1];
     bytes[2] = b[2];

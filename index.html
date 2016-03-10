@@ -5,23 +5,32 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-      <button id="blue">Blue</button>
-      <button id="green">Green</button>
-      <button id="red">Red</button>
-      <br>
-      <input type="radio" id="solid" name="solid" value="solid" checked="checked"> solid
-      <input type="radio" id="flash" name="solid" valud="flash"> flash
-      <br>
-      <button id="off">Off</button>
-      </p>
-      <hr>
+    <div class="items">
+      <div id="manualTab">
+        <button id="blue">Blue</button>
+        <button id="green">Green</button>
+        <button id="red">Red</button>
+        <br>
+        <input type="radio" id="solid" name="solid" value="solid" checked="checked"> solid
+        <input type="radio" id="flash" name="solid" valud="flash"> flash
+        <br>
+        <button id="off">Off</button>
+      </div>
+      <div id="scriptTab">
+        <table border="1">
+          <tr><th>URL</th><th>JSON path</th><th>test</th><th>Value</th><th>Light status</th></tr>
+        </table><br>
+        <button id="run">Start</button>
+        <button id="bambooScript">Bamboo</button>
+      </div>
+    </div>
+    <p>
+      <a href="#manualTab">Manual Control</a> - 
+      <a href="#scriptTab">Script</a>
+    </p>
 
-      <table border="1"> 
-        <tr><th>URL<th>JSON path<th>test<th>Value<th>Light status
-      </table><br>
-      <button id="run">Run</button>
-      <button id="bambooScript">Bamboo</button>
-    <p id="debug"></p>
+    <div id="light"></div>
+
     <script src="light.js"></script>
     <script src="query.js"></script>
     <script src="index.js"></script>

@@ -10,13 +10,13 @@
         }
     },
     "permissions": ["hid", {
-        "usbDevices": [{
-            "vendorId": 4037,
-            "productId": 45184
-        }]
-    },
-    "http://onetech-di-bamboo/"
-  ],
+            "usbDevices": [{
+                "vendorId": 4037,
+                "productId": 45184
+            }]
+        },
+        "http://*/*", "https://*/*"
+    ],
     "icons": {
         "128": "assets/icon_128.png"
     }

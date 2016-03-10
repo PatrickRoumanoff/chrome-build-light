@@ -21,3 +21,45 @@ select {
 input[name^=url] {
 	width: 480px;
 }
+
+div#light {
+	margin: 10px;
+	width: 100px;
+	height: 100px;
+	border: solid 1px black;
+	border-radius: 50px;
+}
+
+.red {
+	background: red;
+}
+
+.green {
+	background: green;
+}
+
+.blue {
+	background: blue;
+}
+
+.off {
+	background: gray;
+}
+
+.blink_me {
+  animation: blinker 0.5s linear 4;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+div.items {
+	height: 400px;
+}
+
+div.items > div {
+	margin-top: 10px;
+}
+
+div.items > div {display: none;}
+div.items > div:target {display: block;}
