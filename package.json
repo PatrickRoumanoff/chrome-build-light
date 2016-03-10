@@ -1,0 +1,24 @@
+{
+  "name": "chrome-build-light",
+  "version": "1.0.0",
+  "description": "control a light from a chrome app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatrickRoumanoff/chrome-build-light.git"
+  },
+  "keywords": [
+    "light",
+    "delcom",
+    "chrome"
+  ],
+  "author": "Patrick Roumanoff",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/PatrickRoumanoff/chrome-build-light/issues"
+  },
+  "homepage": "https://github.com/PatrickRoumanoff/chrome-build-light#readme"
+}
