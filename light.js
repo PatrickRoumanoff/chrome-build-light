@@ -1,15 +1,16 @@
+var off = 0xFF, solid= 2, flash= 20;
 var codes = {
     solid: {
-        green: [2, 0xFE, 0],
-        red: [2, 0xFD, 0],
-        blue: [2, 0xFB, 0],
-        off: [2, 0xFF, 0]
+        green: [solid, 0xFE, 0],
+        red: [solid, 0xFD, 0],
+        blue: [solid, 0xFB, 0],
+        off: [solid, off, 0]
     },
     flash: {
-        green: [20, 0, 1],
-        red: [20, 0, 2],
-        blue: [20, 0, 4],
-        off: [20, 0xFF, 0]
+        green: [flash, 0, 1],
+        red: [flash, 0, 2],
+        blue: [flash, 0, 4],
+        off: [flash, off, 0]
     }
 }
 
@@ -23,6 +24,7 @@ function getBuffer(status) {
     bytes[0] = b[0];
     bytes[1] = b[1];
     bytes[2] = b[2];
+    console.log(bytes);
     return bytes.buffer;
 }
 

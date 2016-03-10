@@ -16,8 +16,8 @@ function set(color) {
 }
 
 function setOff() {
-    send(getBuffer({color:"off", solid: true}));
-    send(getBuffer({color:"off", solid:false}));
+    sendBuffer(getBuffer({color:"off", solid: true}));
+    sendBuffer(getBuffer({color:"off", solid: false}));
 }
 
 blue.addEventListener('click', set("blue"));
