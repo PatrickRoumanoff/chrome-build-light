@@ -11,16 +11,13 @@ function getSolid() {
 
 function set(color) {
     return function() {
-        if (!getSolid()) {
-            send(getBuffer("off", false));
-        }
-        send(getBuffer(color, getSolid()));
+        sendBuffer(getBuffer({color:color, solid: getSolid()}));
     }
 }
 
 function setOff() {
-    send(getBuffer("off", true));
-    send(getBuffer("off", false));
+    send(getBuffer({color:"off", solid: true}));
+    send(getBuffer({color:"off", solid:false}));
 }
 
 blue.addEventListener('click', set("blue"));
