@@ -1,10 +1,11 @@
 soon
 <a target="_blank" href="https://chrome.google.com/webstore/detail/igkmggljimacfdfalpeelenjeicmfnll">![Try it now in CWS](https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton.png "Click here to install this sample from the Chrome Web Store")</a>
 
+# Delcom Build Light Control
 
-# Delcom Buikd Light Control
+This app control a Delcom Build Light, mostly for my own education.
 
-This app control a Delcom Build Light, mostly for my own education, but can only be used to test a Delcom Build light if yours insn't working as expected.
+You can setup a number of url and test for values in the JSON. the First match will set the delcom ligth. The script is running every minute.
 
 * [HID raw access](https://developer.chrome.com/apps/hid)
 

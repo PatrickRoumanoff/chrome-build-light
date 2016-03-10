@@ -13,19 +13,20 @@ var codes = {
     }
 }
 
-function getBuffer(color, solid) {
+function getBuffer(status) {
     var bytes = new Uint8Array(8);
     for (var i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
-    var code = codes[solid ? "solid" : "flash"];
-    bytes[0] = code[color][0];
-    bytes[1] = code[color][1];
-    bytes[2] = code[color][2];
+    var code = codes[status.solid ? "solid" : "flash"];
+    var b = code[status.color] 
+    bytes[0] = b[0];
+    bytes[1] = b[1];
+    bytes[2] = b[2];
     return bytes.buffer;
 }
 
-function send(buffer) {
+function sendBuffer(buffer) {
     chrome.hid.getDevices({}, function(devices) {
         console.log('getDevices callback', devices);
         if (chrome.runtime.lastError) {

@@ -4,19 +4,19 @@ var debug = document.getElementById('debug');
 
 var scripts = {
     bamboo: [{
-        url: 'http://[host]:[port]/rest/api/latest/plan/[planKey].json',
+        url: 'http://onetech-di-bamboo/rest/api/latest/plan/COPPEROBI-DI.json',
         path: 'isBuilding',
         test: 'eq',
         value: 'true',
         status: 'blue'
     }, {
-        url: 'http://[host]:[port]/rest/api/latest/plan/[planKey]-latest.json',
+        url: 'http://onetech-di-bamboo/rest/api/latest/result/COPPEROBI-DI-latest.json',
         path: 'successful',
         test: 'eq',
         value: 'true',
         status: 'green'
     }, {
-        url: 'http://[host]:[port]/rest/api/latest/plan/[planKey]-latest.json',
+        url: 'http://onetech-di-bamboo/rest/api/latest/result/COPPEROBI-DI-latest.json',
         path: 'successful',
         test: 'neq',
         value: 'true',
@@ -117,6 +117,7 @@ function setup() {
         row, el;
     var fields = ['url', 'path', 'test', 'value', 'status'];
     for (var i = 0; i < 3; i++) {
+        row = {};
         fields.forEach(function(f) {
             row[f] = document.getElementById(f + "[" + i + "]").value;
         });
@@ -125,22 +126,8 @@ function setup() {
     return result;
 }
 
-function statusToColor(status) {
-    if (status.indexOf("-flash")) {
-        return {
-            color: status(0, status.indexOf("-flash")),
-            solid: false
-        };
-    } else {
-        return {
-            color: status,
-            solid: true
-        };
-    }
-}
-
 function test(value, test, target) {
-    switch (row.test) {
+    switch (test) {
         case "eq":
             return ("" + value) == target;
         case "neq":
@@ -158,29 +145,33 @@ function test(value, test, target) {
     }
 }
 
+function statusToColor(status) {
+    if (status.indexOf("-flash") >= 0) {
+        return {
+            color: status.substring(0, status.indexOf("-flash")),
+            solid: false
+        };
+    } else {
+        return {
+            color: status,
+            solid: true
+        };
+    }
+}
+
 function request(input) {
     if (!input || !input.length) {
         return;
     }
     var row = input.shift();
-    var xhr = new XmlHttpRequest(),
-        done = false;
-    xhr.setRequestHeader('Accept', 'text/json');
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', row.url, true);
+    xhr.setRequestHeader('Accept', 'text/json');
     xhr.onload = function() {
         var value = JSON.parse(xhr.responseText)[row.path];
-        switch (row.test) {
-            case "eq":
-                if (("" + value) == row.value) {
-                    var status = statusToColor(row.status);
-                    sendBuffer(getBuffer(status.color, status.solid));
-                    done = true;
-                }
-                break;
-            default:
-                break;
-        }
-        if (!done) {
+        if(test(value, row.test, row.value)) {
+            sendBuffer(getBuffer(statusToColor(row.status)));
+        } else {
             request(input);
         }
     };
@@ -188,16 +179,11 @@ function request(input) {
 }
 
 function loop() {
-    var input = setup(),
-        index = 0,
-        done = false,
-        xhr;
-    while (!done && index < input.length) {
-        xhr = new XmlHttpRequest();
-    }
+    request(setup());
 }
 
 function startLoop() {
+    loop();
     setInterval(loop, 60 * 1000);
 }
 

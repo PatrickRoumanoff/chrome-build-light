@@ -14,7 +14,9 @@
             "vendorId": 4037,
             "productId": 45184
         }]
-    }],
+    },
+    "http://onetech-di-bamboo/"
+  ],
     "icons": {
         "128": "assets/icon_128.png"
     }
