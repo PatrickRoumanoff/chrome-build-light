@@ -5,32 +5,46 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="items">
-      <div id="manualTab">
-        <button id="blue">Blue</button>
-        <button id="green">Green</button>
-        <button id="red">Red</button>
-        <br>
-        <input type="radio" id="solid" name="solid" value="solid" checked="checked"> solid
-        <input type="radio" id="flash" name="solid" valud="flash"> flash
-        <br>
-        <button id="off">Off</button>
-      </div>
-      <div id="scriptTab">
-        <table border="1">
-          <tr><th>URL</th><th>JSON path</th><th>test</th><th>Value</th><th>Light status</th></tr>
-        </table><br>
-        <button id="run">Start</button>
-        <button id="bambooScript">Bamboo</button>
-      </div>
-    </div>
-    <p>
-      <a href="#manualTab">Manual Control</a> - 
-      <a href="#scriptTab">Script</a>
-    </p>
-
-    <div id="light"></div>
-
+    <h1><div id="light" class="off"></div> Delcom light control</h1>
+    <ul class="tabs">
+      <li>
+        <input type="radio" name="tabs" id="tab1" checked />
+        <label for="tab1">Manual</label>
+        <div id="tab-content1" class="tab-content">
+          <button id="blue">Blue</button>
+          <button id="green">Green</button>
+          <button id="red">Red</button>
+          <br><br>
+          <button id="off">Off</button>
+          <br><br>
+          <input type="radio" id="solid" name="solid" value="solid" checked="checked"> <label for="solid">Solid</label><br>
+          <input type="radio" id="flash" name="solid" valud="flash"> <label for="flash">Flash</label>
+          <br>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" id="tab2"  />
+        <label for="tab2">Script</label>
+        <div id="tab-content2" class="tab-content">
+          <table border="1">
+            <tr><th>URL</th><th>JSON path</th><th>test</th><th>Value</th><th>Light status</th></tr>
+          </table><br>
+          <button id="run">Start</button>
+          <button id="bambooScript">Bamboo</button>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" id="tab3"  />
+        <label for="tab3">About</label>
+        <div id="tab-content3" class="tab-content">
+          This is a simple Chrome App to control a Delcom Light.<br>
+          Use the manual tab to manually control the color and the flashing.<br>
+          Use the script tab to use REST end point to control the light.<br>
+          A sample script is provided to check a bamboo build plan, but any RESt end point will do.
+        </div>
+      </li>
+    </ul>
+    <br style="clear: both;" />
     <script src="light.js"></script>
     <script src="query.js"></script>
     <script src="index.js"></script>

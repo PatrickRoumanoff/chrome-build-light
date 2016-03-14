@@ -1,33 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  margin: 10px;
-  overflow-y: scroll;
-  height: 100%
+  padding: 20px;
+  text-align: left;
+  font-family: Lato;
+  color: #fff;
+  background: #9b59b6;
 }
 
 body, input, button, select, option, th {
   font-size: 12pt;	
 }
 
-select {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
-}
-
 input[name^=url] {
-	width: 480px;
+	width: 440px;
 }
 
 div#light {
 	margin: 10px;
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: 70px;
 	border: solid 1px black;
-	border-radius: 50px;
+	border-radius: 35px;
+	display: inline-block;
 }
 
 .red {
@@ -53,13 +58,67 @@ div#light {
 @keyframes blinker {  
   50% { opacity: 0.0; }
 }
-div.items {
-	height: 400px;
+
+button {
+	width: 75px;
+	height: 30px;
 }
 
-div.items > div {
-	margin-top: 10px;
+.tabs {
+  width: 1040px;
+  float: none;
+  list-style: none;
+  position: relative;
+  margin: 40px 0 0 10px;
+  text-align: left;
 }
 
-div.items > div {display: none;}
-div.items > div:target {display: block;}
+.tabs li {
+  float: left;
+  display: block;
+}
+.tabs > li > input[type="radio"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.tabs > li > label {
+  display: block;
+  padding: 14px 21px;
+  border-radius: 3px 3px 0 0;
+  font-size: 20px;
+  font-weight: normal;
+  background: #8e44ad;
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.tabs label:hover {
+  background: #703688;
+}
+.tabs .tab-content {
+  z-index: 2;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  font-size: 17px;
+  line-height: 25px;
+  padding: 25px;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  background: #612e76;
+}
+.tabs [id^="tab"]:checked + label {
+  top: 0;
+  padding-top: 17px;
+  background: #612e76;
+}
+.tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+  display: block;
+}
