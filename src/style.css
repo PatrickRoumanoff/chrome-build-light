@@ -68,7 +68,7 @@ button {
   width: 1040px;
   float: none;
   list-style: none;
-  position: relative;
+  position: absolute;
   margin: 40px 0 0 10px;
   text-align: left;
 }
