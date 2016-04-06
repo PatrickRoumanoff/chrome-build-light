@@ -1,5 +1,4 @@
-soon
-<a target="_blank" href="https://chrome.google.com/webstore/detail/igkmggljimacfdfalpeelenjeicmfnll">![Try it now in CWS](https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton.png "Click here to install this app from the Chrome Web Store")</a>
+<a target="_blank" href="https://chrome.google.com/webstore/detail/ompeflnbdjkohlmbkmnjbmfpnbkaiebc/">![Try it now in the Chrome Web Store](https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton.png "Click here to install this app from the Chrome Web Store")</a>
 
 # Delcom Build Light Control
 
